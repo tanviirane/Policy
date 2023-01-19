@@ -1,0 +1,37 @@
+<?php
+// module/Policy/view/policy/policy/index.phtml:
+
+$title = 'My policy';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('policy', ['action' => 'add']) ?>">Add new policy</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Policy Number</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Premium</th>
+    <th>&nbsp;</th>
+</tr>
+<?php 
+foreach ($policies as $policy) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($policy->firstname) ?></td>
+        <td><?= $this->escapeHtml($policy->lastname) ?></td>
+        <td><?= $this->escapeHtml($policy->policynumber) ?></td>
+        <td><?= $this->escapeHtml($policy->startdate) ?></td>
+        <td><?= $this->escapeHtml($policy->enddate) ?></td>
+        <td><?= $this->escapeHtml($policy->premium) ?></td>
+        <td>
+            <a href="<?= $this->url('policy', ['action' => 'edit', 'id' => $policy->id]) ?>">Edit</a>
+            <a href="<?= $this->url('policy', ['action' => 'delete', 'id' => $policy->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
